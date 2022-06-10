@@ -19,6 +19,9 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
+
+    text-align: center;
+    width: 30vw;
   }
   
   /* The Close Button */
@@ -36,6 +39,14 @@
     cursor: pointer;
   }
 
+  ul{
+    list-style: none;
+    padding: 0px;
+  }
+
+  li{
+    margin: 8px;
+  }
 
   /*typography*/
   h1, h2, h3 {
@@ -101,6 +112,12 @@
   #myBtn h2{
     color: white;
     margin: 0px;
+  }
+
+  form button{
+    width:fit-content;
+    padding:5px 20px;
+    margin-bottom: 20px;
   }
 
   .not-read{
