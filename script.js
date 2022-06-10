@@ -11,8 +11,7 @@ function addBookToLibrary(book) {
   myLibrary.push(book)
 };
 
-//use .forEach?
-//use second loop to reduce code inside?
+//Display the books!
 const bookshelf = document.getElementById('book-wrapper');
 const book = document.getElementsByClassName('booktitle');
 
@@ -31,7 +30,8 @@ function displayBooks(myLibrary){
           {if (!existingBooks.includes(book)){
             let card = document.createElement('div');
             card.setAttribute('id', i)
-          
+            
+            //card content
             let title = document.createElement('h3');
             title.classList.add('booktitle')
             card.appendChild(title);
@@ -43,15 +43,41 @@ function displayBooks(myLibrary){
             pages.textContent = `pages: ${myLibrary[i].pages}`;
             card.appendChild(pages);
 
+            //read status
             let read = document.createElement('button');
             read.classList.add('readButton');
-            read.textContent = 'Read';
-            read.setAttribute('data-index', i)
+            read.setAttribute('data-index', i);
+            if (myLibrary[i].read) {
+              read.classList.add('read')
+              read.textContent = 'Read';
+            } else {
+              read.classList.add('not-read');
+              read.textContent = 'Not Read';
+            }
+            read.addEventListener('click', function() {
+              if (read.classList.contains('not-read')) {
+                read.classList.add('read');
+                read.classList.remove('not-read');
+                read.textContent = 'Read';
+              } else {
+                read.classList.add('not-read')
+                read.classList.remove('read')
+                read.textContent = 'Not Read';
+              }
+            }); 
             card.appendChild(read);
+
+            //remove books
             let remove = document.createElement('button');
             remove.textContent = 'Remove';
             remove.classList.add('removeButton');
             remove.setAttribute('data-index', i)
+            remove.addEventListener('click', function() {
+              let index = remove.getAttribute('data-index'); 
+              const element = document.getElementById(index);
+              element.remove();
+              myLibrary.splice(index, 1)
+            }); 
             card.appendChild(remove);
 
             
@@ -72,60 +98,8 @@ addBookToLibrary(achilles);
 addBookToLibrary(circe);
 
 window.onload = displayBooks(myLibrary);
-
-//Remove Book
-let removeBtns = document.getElementsByClassName("removeButton");
-let removeBtnsArray = Array.from(removeBtns);
-removeBtnsArray.forEach((button) => {
-  button.addEventListener('click', function() {
-    let index = button.getAttribute('data-index'); 
-    const element = document.getElementById(index);
-    element.remove();
-    myLibrary.splice(index, 1)
-  }); 
-});
-
-
-// //Read Button
-// let readBtns = document.getElementsByClassName("readButton");
-// let readBtnsArray = Array.from(readBtns);
-
-// //Initial State
-// readBtnsArray.forEach((button) => {
-//   let index = parseInt(button.getAttribute('data-index'));
-//   let readStatus = myLibrary[index].read;
-//   readStatus? button.classList.add('read'): button.classList.remove('not-read');
-// });
-
-// readBtnsArray.forEach((button) => {
-//   button.addEventListener('click', () => {
-//     // button.classList.toggle('read');
-//     // let index = parseInt(button.getAttribute('data-index'));
-//     // let readStatus = myLibrary[index].read;
-//     if (button.classList.contains('not-read')) {
-//       button.classList.add('read');
-//       button.classList.remove('not-read');
-//     }
-//     if(button.classList.contains('read')) {
-//       button.classList.add('not-read')
-//       button.classList.remove('read')
-//     }
-//   });
-// });
-
-    // for (var i = 0; i < readBtns.length; i++) {
-    //     readBtns[i].addEventListener("click", function () {
-    //       let index = readBtns[i].read;
-    //       let readStatus = myLibrary[index].read;
-    //       readStatus ? readBtns[i].classList.add('read') : readBtns[i].classList.add('not-read');
-    //     });
-    // }
  
     
-
-
-
-
 //Form
 const submit = document.getElementById('submit');
 document.addEventListener('DOMContentLoaded', ()=>{
@@ -172,5 +146,3 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-
-
