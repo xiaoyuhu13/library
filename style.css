@@ -37,11 +37,75 @@
   }
 
 
-  
+  /*typography*/
+  h1, h2, h3 {
+    font-family: 'Gentium Plus', serif;
+    color: rgb(32, 32, 32);
+  }
+
+  h1{
+    font-size: 28pt;
+    color: #fefae0;
+  }
+
+  /*layout*/
+  body{
+    margin:0px;
+  }
+
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0vh 3vw;
+    background-color:#283618;
+  }
+
+  /*books*/
+  #book-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 6vh;
+    gap: 2vw;
+  }
+  .card{
+    width:20vw;
+    height:35vh;
+    border: 3px solid #dda15e;
+    background-color: #fefae0;
+    border-radius: 5px;
+    text-align: center;
+  }
+
   /*buttons*/
+  button{
+    background: #dda15e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    height:5vh;
+    width: 7vw;
+    margin:5px;
+    margin-top:5vh
+  }
+  #myBtn{
+    height:fit-content;
+    width: 15vw;
+    margin: 0;
+  }
+  #myBtn h2{
+    color: white;
+    margin: 0px;
+  }
+
   .not-read{
-    background-color: red;
+    background-color: #e63946;
   }
   .read{
-    background-color: green;
+    background-color: #606c38;
   }

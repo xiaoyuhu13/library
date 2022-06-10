@@ -30,6 +30,7 @@ function displayBooks(myLibrary){
           {if (!existingBooks.includes(book)){
             let card = document.createElement('div');
             card.setAttribute('id', i)
+            card.setAttribute('class', 'card')
             
             //card content
             let title = document.createElement('h3');
